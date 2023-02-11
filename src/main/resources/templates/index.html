@@ -1,0 +1,215 @@
+.
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Mon Espace Cours</title>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" type="text/css" href="style_titre.css">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" 
+                  integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
+    </head>
+    <body>
+        <header>
+            <!-- Intro settings -->
+            <style>
+                /* Default height for small devices */
+                #intro-example {
+                    height: 400px;
+                }
+                
+              .card {
+                margin-left: 10px;
+                margin-right: 15px;
+}           
+
+                /* Height for devices larger than 992px */
+                @media (min-width: 992px) {
+                    #intro-example {
+                        height: 600px;
+                    }
+                }
+            </style>
+
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-white">
+                <div class="container-fluid">
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-mdb-toggle="collapse"
+                        data-mdb-target="#navbarExample01"
+                        aria-controls="navbarExample01"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                        >
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" href="#">Barre de navigation</a>
+                    <div class="collapse navbar-collapse" id="navbarExample01">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item active">
+                                <a class="nav-link" aria-current="page" href="/">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" th:href = "@{/prof}" >Mes Profs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" th:href = "@{/seancecours}">Mes Séances de Cours </a>
+                            </li>
+
+                        </ul>
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search">
+                                <button class="btn btn-outline-success" type="submit">Rechercher</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+            <!-- Navbar -->
+
+            <!-- Background image -->
+            <div
+                id="intro-example"
+                class="p-5 text-center bg-image"
+                style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain3.webp');"
+                
+                >
+                <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);">
+                    <div class="d-flex justify-content-center align-items-center h-100">
+                        <div class="text-white">
+                            <h1 class="mb-3">Bienvenue dans ma Gestion des Seances de Cours</h1>
+                            
+                            <a
+                                class="btn btn-outline-light btn-lg m-2"
+                                th:href = "@{/prof}"
+                                role="button"
+                                rel="nofollow"
+                                target="_blank"
+                                >Gérer Mes Profs</a
+                            >
+                            <a
+                                class="btn btn-outline-light btn-lg m-2"
+                                th:href = "@{/seancecours}"
+                                target="_blank"
+                                role="button">Gérer Mes Seances de Cours</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Background image -->
+        </header> <br><br>
+        <div
+  id="carouselMultiItemExample"
+  class="carousel slide carousel-dark text-center"
+  data-mdb-ride="carousel"
+>
+            <div class="row">         
+        <div class="col-lg-4 d-none d-lg-block">
+            <div class="card">
+              <img
+                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
+                class="card-img-top"
+                alt="Storm Clouds"
+              />
+              <div class="card-body">
+                  <h5 class="card-title" >Mes Profs</h5>
+                <p class="card-text">
+                  Accéder a ma liste de Prof ,pouvoir ajouter,modifier et mise à jour un prof.
+                </p>
+                <a th:href = "@{/prof}" class="btn btn-primary">Consulter</a>
+              </div>
+            </div>
+          </div>
+            
+                        
+        <div class="col-lg-4 d-none d-lg-block">
+            <div class="card">
+              <img
+                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/185.webp"
+                class="card-img-top"
+                alt="Storm Clouds"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Mes Seances de Cours</h5>
+                <p class="card-text">
+                  Accéder a toutes mes Seance de Cours ,pouvoir ajouter,modifier et mise à jour une Seance.
+                </p>
+                <a th:href = "@{/seancecours}" class="btn btn-primary">Consulter</a>
+              </div>
+            </div>
+          </div>
+            
+            
+        <div class="col-lg-4 d-none d-lg-block">
+            <div class="card">
+              <img
+                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/186.webp"
+                class="card-img-top"
+                alt="Storm Clouds"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Mon Emploi du temps</h5>
+                <p class="card-text">
+                  Mon horaire de cours pour toutes la semaine. 
+                </p>
+                <a href="#!" class="btn btn-primary">Button</a>
+              </div>
+            </div>
+          </div>
+            </div>
+
+  <hr />
+
+        <footer class="bg-light text-center">
+            <!-- Grid container -->
+            <div class="container p-4 pb-0">
+                <!-- Section: Form -->
+                <section class="">
+                    <form action="">
+                        <!--Grid row-->
+                        <div class="row d-flex justify-content-center">
+                            <!--Grid column-->
+                            <div class="col-auto">
+                                <p class="pt-2">
+                                    <strong>Suivez mon actualité</strong>
+                                </p>
+                            </div>
+                            <!--Grid column-->
+
+                            <!--Grid column-->
+                            <div class="col-md-5 col-12">
+                                <!-- Email input -->
+                                <div class="form-outline mb-4">
+                                    <input type="email" id="form5Example27" class="form-control" />
+                                    <label class="form-label" for="form5Example27">Adresse e-mail</label>
+                                </div>
+                            </div>
+                            <!--Grid column-->
+
+                            <!--Grid column-->
+                            <div class="col-auto">
+                                <!-- Submit button -->
+                                <button type="submit" class="btn btn-primary mb-4">
+                                    S'inscrire 
+                                </button>
+                            </div>
+                            <!--Grid column-->
+                        </div>
+                        <!--Grid row-->
+                    </form>
+                </section>
+                <!-- Section: Form -->
+            </div>
+            <!-- Grid container -->
+
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                © 2022 Copyright:
+                <a class="text-dark" href="https://mdbootstrap.com/">Yacinetamindjoute.com</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
+        </body>
+</html>

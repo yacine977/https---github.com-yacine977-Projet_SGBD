@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Gestion des Seance de Cours </title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" 
+              integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+                <div class="container-fluid">
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-mdb-toggle="collapse"
+                        data-mdb-target="#navbarExample01"
+                        aria-controls="navbarExample01"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                        >
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" href="#">Barre de navigation</a>
+                    <div class="collapse navbar-collapse" id="navbarExample01">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item active">
+                                <a class="nav-link" aria-current="page" href="/">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" th:href = "@{/prof}" >Vos Profs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" th:href = "@{/seancecours}">Vos Séances de Cours </a>
+                            </li>
+
+                        </ul>
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search">
+                                <button class="btn btn-outline-success" type="submit">Rechercher</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+<hr />
+        <div class="container my-2">
+            <center>
+                <h1>Gestion des <small class="text-muted">Seance de Cours</small> <h1>  
+                        </center>
+                            <hr />
+                        
+                                
+                                <a th:href = "@{/seancecours/new}" class="btn btn-info  mb-3">Ajouter une Seance de Cours</a> <br>
+                                    <br>
+                                <div class="row">               
+                                    <div class="col">
+                                        <form th:action="@{/seancecours/filter1}" method="get">
+                                            <div class="input-group input-group-lg mb-3">
+
+                                                <input type="text" name="motCle" th:value="${filter1}" class="input-group-lg" placeholder="Filtrer par Nom du Cours"  />
+                                                <button type="submit" class="btn btn-info">Rechercher</button>
+
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="col">
+                                        <form th:action="@{/seancecours/filter2}" method="get">
+
+                                            <div class="input-group input-group-lg mb-3">
+
+                                                <input type="text" name="motCle" th:value="${filter2}" 
+                                                       placeholder="Filtrer par Jour (Lundi...)"
+                                                       
+                                                       required pattern="Lundi|Mardi|Mercredi|Jeudi|Vendredi|Samedi|Dimanche">
+                                                <button type="submit" class="btn btn-info " >Rechercher</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    
+                <div class="col">
+                    <div class="input-group input-group-lg mb-3">
+                    <a th:href = "@{/seancecours}" class="btn btn-danger">Enlever les filtres</a>
+                    </div><br>
+                </div>
+                                        <h3 class="mb-3">Liste des Seances de Cours  </h3>
+            
+
+
+                                </div>
+
+                                </div> 
+                                    
+                                    
+
+                                    <div class="container my-2">
+
+                                        <table class="table table-dark" >
+                                            <thead>
+                                                <tr align="center">
+                                                    <th>Nom du Cours </th>
+                                                    <th>Le Jour</th>
+                                                    <th>Heure de Debut</th>
+                                                    <th>Heure de Fin</th>
+                                                    <th>Heure de Fin</th>
+                                                    <th>Modifier/Supprimer </th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody align="center">
+                                                <tr th:each="seancecours : ${listSeanceCours}">
+                                                    <td th:text="${seancecours.nomCours}"></td>
+                                                    <td th:text="${seancecours.jour}"></td>
+                                                    <td th:text="${seancecours.HeureDeb}"></td>
+                                                    <td th:text="${seancecours.HeureFin}"></td>
+                                                    <td th:text="${seancecours.prof.nom}"></td>
+                                                    <td><a th:href="@{/seancecours/update(id=${seancecours.id})}" class="btn btn-info">Modifier  </a>
+                                                        <a th:href="@{/seancecours/delete(id=${seancecours.id})}" class="btn btn-warning">Supprimer</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <a th:href = "@{/}" class="btn btn-secondary  mb-3">Retour à la page d'accueil</a>
+                                    </div>
+                         <hr />           
+        <footer class="bg-light text-center">
+            <!-- Grid container -->
+            <div class="container p-4 pb-0">
+                <!-- Section: Form -->
+                <section class="">
+                    <form action="">
+                        <!--Grid row-->
+                        <div class="row d-flex justify-content-center">
+                            <!--Grid column-->
+                            <div class="col-auto">
+                                <p class="pt-2">
+                                    <strong>Suivez mon actualité</strong>
+                                </p>
+                            </div>
+                            <!--Grid column-->
+
+                            <!--Grid column-->
+                            <div class="col-md-5 col-12">
+                                <!-- Email input -->
+                                <div class="form-outline mb-4">
+                                    <input type="email" id="form5Example27" class="form-control" />
+                                    <label class="form-label" for="form5Example27">Adresse e-mail</label>
+                                </div>
+                            </div>
+                            <!--Grid column-->
+
+                            <!--Grid column-->
+                            <div class="col-auto">
+                                <!-- Submit button -->
+                                <button type="submit" class="btn btn-primary mb-4">
+                                    S'inscrire 
+                                </button>
+                            </div>
+                            <!--Grid column-->
+                        </div>
+                        <!--Grid row-->
+                    </form>
+                </section>
+                <!-- Section: Form -->
+            </div>
+            <!-- Grid container -->
+
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                © 2022 Copyright:
+                <a class="text-dark" href="https://mdbootstrap.com/">Yacinetamindjoute.com</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
+                                    </body>
+                                    </html>
